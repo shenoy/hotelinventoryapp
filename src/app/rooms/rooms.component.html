@@ -1,0 +1,52 @@
+
+<!-- <hinv-header></hinv-header> -->
+<!-- <hinv-header></hinv-header> -->
+<!-- <hinv-header></hinv-header>
+<hinv-header></hinv-header> -->
+
+<!-- {{rooms$|async|json}} -->
+
+<h1>Welcome to {{hotelName}}</h1>
+
+<!-- <div [hidden]="hideRooms">
+    Number of Rooms : 
+    <div  [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red'}"
+    [innerText]="numberOfRooms"></div>   
+</div> -->
+
+<router-outlet></router-outlet>
+
+<!-- {{rooms.availableRooms  ?? 'No rooms'}} -->
+
+<div *ngIf="selectedRoom">
+    {{selectedRoom|json}}
+</div>
+
+<div>
+    <button class="btn btn-danger" (click)="addRoom()">Add Room</button>
+</div>
+
+<!-- <h1> -->
+    <!-- {{getError$ | async}} -->
+   <!-- Number of rooms :  {{roomsCount$ |async}} -->
+<!-- </h1> -->
+
+
+{{priceFilter | json}}
+
+<div>
+    <input type="number" class="form-control" placeholder="Price"  [formControl]="priceFilter">
+</div>
+
+<div *ngIf="rooms$ | async as rooms">
+   <hinv-rooms-list [rooms] ="rooms" [title]="title"
+   (selectedRoom)="selectRoom($event)"
+   ></hinv-rooms-list>
+  
+</div>
+<!-- <button (click) = "toggle()">Toggle</button>
+<button (click) = "editRoom()">Edit</button>
+<button (click) = "deleteRoom()">Delete</button>
+
+<h1>{{totalBytes}} loaded</h1> -->
+
